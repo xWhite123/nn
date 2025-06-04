@@ -4,12 +4,11 @@ import matplotlib.pyplot as plt
 # 生成混合高斯分布数据
 def generate_data(n_samples=1000):
     np.random.seed(42)
-    # 真实参数
-    # 定义三个高斯分布的均值(中心点)
+    
     mu_true = np.array([ 
-        [0, 0],  # 第一个高斯分布的均值
-        [5, 5],  # 第二个高斯分布的均值
-        [-5, 5]  # 第三个高斯分布的均值
+        [0, 0],  
+        [5, 5], 
+        [-5, 5]  
     ])
     # 定义三个高斯分布的协方差矩阵
     sigma_true = np.array([
