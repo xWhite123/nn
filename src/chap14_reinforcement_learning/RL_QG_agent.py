@@ -5,8 +5,7 @@ import numpy as np
 class RL_QG_agent:
     def __init__(self):
         self.model_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Reversi")
-    #    pass    # 删掉这句话，并填写相应代码
-        #用于初始化与模型保存、TensorFlow会话以及输入和输出张量相关的属性
+    
         os.makedirs(self.model_dir, exist_ok=True)
         self.sess = None
         self.saver = None
@@ -15,14 +14,11 @@ class RL_QG_agent:
 
     def init_model(self):
 
-        # 定义自己的 网络
+      
         self.sess = tf.Session()
-        # 定义输入状态，假设为8x8棋盘，3个通道（如当前玩家棋子、对手棋子、可行位置）
         self.input_states = tf.placeholder(tf.float32, shape=[None, 8, 8, 3], name="input_states")
-        # 构建卷积神经网络
         conv1 = tf.layers.conv2d(inputs=self.input_states, filters=32, kernel_size=3, padding="same", activation=tf.nn.relu)
         conv2 = tf.layers.conv2d(inputs=conv1, filters=64, kernel_size=3, padding="same", activation=tf.nn.relu)
-        # 扁平化层
         flat = tf.layers.flatten(conv2)
         # 全连接层
         dense = tf.layers.dense(inputs=flat, units=512, activation=tf.nn.relu)
