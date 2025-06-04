@@ -16,8 +16,6 @@ from tensorflow.keras import layers, optimizers, datasets
 import os,sys,tqdm
 
 
-# ## 玩具序列数据生成
-# 生成只包含[A-Z]的字符串，并且将encoder输入以及decoder输入以及decoder输出准备好（转成index）
 
 # In[2]:
 
@@ -29,10 +27,7 @@ def randomString(stringLength):
 
     letters = string.ascii_uppercase # 定义可用的字符集
     return ''.join(random.choice(letters) for i in range(stringLength))
-    # 生成随机字符串
-    # 使用 random.choice(letters) 从 letters 中随机选择一个字符
-    # 重复这个过程 stringLength 次，并用 ''.join() 将这些字符连接成一个字符串
-    # 最终返回生成的随机字符串
+
 
 def get_batch(batch_size, length):
     batched_examples = [randomString(length) for i in range(batch_size)]    # 生成batch_size个随机字符串
@@ -44,7 +39,6 @@ def get_batch(batch_size, length):
 print(get_batch(2, 10))
 
 
-# # 建立sequence to sequence 模型
 
 # In[3]:
 
@@ -123,7 +117,6 @@ class mySeq2SeqModel(keras.Model):
         return out, state
 
 
-# # Loss函数以及训练逻辑
 
 # In[4]:
 
