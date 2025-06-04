@@ -11,7 +11,7 @@ from tensorflow import keras
 from tensorflow.keras import layers, optimizers, datasets
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # or any {'0', '1', '2'}
-#定义了一个函数mnist_dataset()，用于加载并预处理MNIST数据集
+
 def mnist_dataset():
     (x, y), (x_test, y_test) = datasets.mnist.load_data()
     #normalize
@@ -24,7 +24,7 @@ def mnist_dataset():
 # In[3]:
 import numpy as np
 
-# 定义矩阵乘法层
+
 class Matmul:
     def __init__(self):
         self.mem = {}
@@ -53,7 +53,7 @@ class Matmul:
       
         return grad_x, grad_W
 
-# 定义 ReLU 激活层
+
 class Relu:
     def __init__(self):
         self.mem = {}
@@ -73,7 +73,7 @@ class Relu:
         ####################
         return grad_x
 
-# 定义 Softmax 层（输出概率）
+
 class Softmax:
     '''
     softmax over last dimention
@@ -109,7 +109,7 @@ class Softmax:
         tmp = -tmp + grad_y * s 
         return tmp
     
-# 定义 Log 层（计算 log softmax，用于交叉熵）
+
 class Log:
     '''
     softmax over last dimention
