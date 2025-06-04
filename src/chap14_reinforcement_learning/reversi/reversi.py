@@ -70,7 +70,6 @@ class ReversiEnv(gym.Env):
     def _seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
 
-        # Update the random policy if needed
         if isinstance(self.opponent, str):
             if self.opponent == 'random':
                 self.opponent_policy = make_random_policy(self.np_random)
@@ -83,7 +82,7 @@ class ReversiEnv(gym.Env):
         return [seed]
 
     def _reset(self):
-        # init board setting
+       
         self.state = np.zeros((3, self.board_size, self.board_size))
         self.state[2, :, :] = 1.0
         self.state[2, 3:5, 3:5] = 0
@@ -95,7 +94,7 @@ class ReversiEnv(gym.Env):
         self.possible_actions = ReversiEnv.get_possible_actions(self.state, self.to_play)
         self.done = False
 
-        # Let the opponent play if it's not the agent's turn
+        
         if self.player_color != self.to_play:
             a = self.opponent_policy(self.state)
             ReversiEnv.make_place(self.state, a, ReversiEnv.BLACK)
