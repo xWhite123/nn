@@ -16,9 +16,7 @@ import os,sys,tqdm
 
 # ## 数据生成
 # 我们随机在 `start->end`之间采样除整数对`(num1, num2)`，计算结果`num1+num2`作为监督信号。
-# * 首先将数字转换成数字位列表 `convertNum2Digits`
-# * 将数字位列表反向
-# * 将数字位列表填充到同样的长度 `pad2len`
+
 
 # In[2]:
 
@@ -90,7 +88,6 @@ def prepare_batch(Nums1, Nums2, results, maxlen):
     
     return Nums1, Nums2, results
 
-# # 建模过程， 按照图示完成建模
 
 # In[3]:
 
