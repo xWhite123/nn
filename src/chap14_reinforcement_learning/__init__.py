@@ -1,7 +1,5 @@
 from gym.envs.registration import registry, register, make, spec
 
-# Algorithmic
-# ----------------------------------------
 
 register(
     id='Copy-v0',
@@ -90,8 +88,7 @@ register(
     max_episode_steps=500,
 )
 
-# Box2d
-# ----------------------------------------
+
 
 register(
     id='LunarLander-v2',
@@ -198,10 +195,6 @@ register(
     max_episode_steps=200,
 )
 
-# Mujoco
-# ----------------------------------------
-
-# 2D
 
 register(
     id='Reacher-v1',
