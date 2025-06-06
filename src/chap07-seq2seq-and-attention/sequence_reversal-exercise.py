@@ -208,7 +208,6 @@ print([is_reverse(*item) for item in list(zip(*sequence_reversal()))])
 print(list(zip(*sequence_reversal())))
 
 
-# In[ ]:
 
 
 
