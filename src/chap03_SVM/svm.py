@@ -41,10 +41,10 @@ def eval_acc(label, pred):
     """计算准确率"""
     return np.sum(label == pred) / len(pred)#准确率 = 正确预测的样本数 / 总样本数
   
-#SVM模型 实现了线性SVM分类
+# SVM模型 实现了线性SVM分类
 class SVM():
     """SVM模型"""
-    #目标函数：(1/2)||w||² + C * Σmax(0, 1 - y_i(w·x_i + b))
+    # 目标函数：(1/2)||w||² + C * Σmax(0, 1 - y_i(w·x_i + b))
     def __init__(self, lr = 0.001, epochs=1000, lambda_ = 0.001, tolerance = 1e-3):
         self.w = None  # w: 权重向量(决定分类超平面的方向)
         self.b = 0     # b: 偏置项(决定分类超平面的位置)
@@ -59,12 +59,12 @@ class SVM():
         训练 SVM 模型。
         :param data_train: 包含特征和标签的 NumPy 数组，形状为 (n_samples, n_features + 1)
         """
-        X = data_train[:, :-1] #从data_train中提取特征矩阵X
+        X = data_train[:, :-1]                      #从data_train中提取特征矩阵X
         y = np.where(data_train[:, -1] == 0, -1, 1) #处理标签列，将0类标签转换为-1，非0类标签转换为1，data_train[:, -1]选择最后一列(标签列)，np.where(condition, x, y)：如果condition为True则选x，否则选y
-        y = data_train[:, -1] #处理标签列，将0类标签转换为-1，非0类标签转换为1，data_train[:, -1]选择最后一列(标签列)，np.where(condition, x, y)：如果condition为True则选x，否则选y
+        y = data_train[:, -1]                       #处理标签列，将0类标签转换为-1，非0类标签转换为1，data_train[:, -1]选择最后一列(标签列)，np.where(condition, x, y)：如果condition为True则选x，否则选y
 
         n_samples, n_features = X.shape #获取样本数量和特征数量
-        self.w = np.zeros(n_features) #初始化权重向量w为零向量
+        self.w = np.zeros(n_features)   #初始化权重向量w为零向量
         self.b = 0
 
         for epoch in range(self.epochs):
