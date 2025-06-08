@@ -104,7 +104,7 @@ test_data = np.random.normal(size=[10])
 prob = tf.nn.sigmoid(test_data)  
 # 随机生成 0 或 1 的标签
 label = np.random.randint(0, 2, 10).astype(test_data.dtype)   
-print(label)
+print(label) # 输出结果
 
 # 对比手动实现和 TensorFlow 实现的 sigmoid 交叉熵结果
 ((tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(label, test_data))
