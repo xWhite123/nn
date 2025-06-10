@@ -106,9 +106,9 @@ register(
     max_episode_steps = 1000,
     reward_threshold = 200,   # 成功着陆得分
 )
-# 月球着陆器连续动作版本
+
 register(
-    id='LunarLanderContinuous-v2',  
+    id='LunarLanderContinuous-v2',  # 月球着陆器连续动作版本
     entry_point='gym.envs.box2d:LunarLanderContinuous',
     max_episode_steps=1000,
     reward_threshold=200,
@@ -162,9 +162,8 @@ register(
     reward_threshold = 0.78, # optimum = .8196   # 成功到达目标的平均奖励
 )
 
-# 冰湖行走（8x8网格版）
 register(
-    id='FrozenLake8x8-v0',
+    id='FrozenLake8x8-v0',  # 冰湖行走（8x8网格版）
     entry_point='gym.envs.toy_text:FrozenLakeEnv',
     kwargs={'map_name' : '8x8'},
     max_episode_steps=200,
