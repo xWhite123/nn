@@ -9,7 +9,7 @@ from gym import spaces
 import numpy as np
 from gym import error
 from gym.utils import seeding
- #这段代码定义了一个随机策略函数 random_policy，用于在黑白棋（Reversi/Othello）游戏中为当前玩家随机选择一个合法的落子动作（包括“跳过”动作）
+#这段代码定义了一个随机策略函数 random_policy，用于在黑白棋（Reversi/Othello）游戏中为当前玩家随机选择一个合法的落子动作（包括“跳过”动作）
 def make_random_policy(np_random):
     def random_policy(state, player_color):
         possible_places = ReversiEnv.get_possible_actions(state, player_color)
@@ -99,7 +99,7 @@ class ReversiEnv(gym.Env):
         self.possible_actions = ReversiEnv.get_possible_actions(self.state, self.to_play)
         self.done = False
 
-        # Let the opponent play if it's not the agent's turn
+        # 若非智能体回合，则让对手行棋
         if self.player_color != self.to_play:
             a = self.opponent_policy(self.state)
             ReversiEnv.make_place(self.state, a, ReversiEnv.BLACK)
@@ -111,7 +111,7 @@ class ReversiEnv(gym.Env):
         action = action[0]
         
         assert self.to_play == self.player_color
-        # If already terminal, then don't do anything
+        # 若已是终止状态，则不执行任何操作
         if self.done:   # 如果已经结束了
             return self.state, 0., True, {'state': self.state}
         if color == 0:  #  黑色棋子是 0
